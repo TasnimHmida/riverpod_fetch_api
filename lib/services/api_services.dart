@@ -18,5 +18,3 @@ class ApiServices {
 }
 
 final userProvider = Provider<ApiServices>((ref) => ApiServices());
-
-final xyz = Provider<String>((ref) => 'Hi Flutter');
