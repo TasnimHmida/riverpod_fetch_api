@@ -1,33 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/network/network_info.dart';
+import '../../../../core/providers/http_client_provider.dart';
+import '../../../../core/providers/network_info_provider.dart';
 import '../../data/data_sources/post_remote_data_source.dart';
-import 'package:http/http.dart' as http;
 import '../../data/repositories/post_repository_impl.dart';
 import '../repositories/posts_repository.dart';
 
-final postDataSourceProvider = Provider<PostRemoteDataSource>(
-  (
-    _,
-  ) =>
-      PostRemoteDataSourceImpl(client: http.Client()),
-);
-
-final internetConnectionCheckerProvider =
-    Provider<InternetConnectionChecker>((_) => InternetConnectionChecker());
-
-final networkInfoProvider = Provider<NetworkInfo>(
-  (
-    ref,
-  ) =>
-      NetworkInfoImpl(ref.watch(internetConnectionCheckerProvider)),
-);
+final postDataSourceProvider = Provider<PostRemoteDataSource>((ref) {
+  final client = ref.watch(httpClientProvider);
+  return PostRemoteDataSourceImpl(client: client);
+});
 
 final postRepositoryProvider = Provider<PostsRepository>(
-  (
-    ref,
-  ) {
+  (ref) {
     final dataSource = ref.watch(postDataSourceProvider);
     final networkInfo = ref.watch(networkInfoProvider);
     return PostsRepositoryImpl(
