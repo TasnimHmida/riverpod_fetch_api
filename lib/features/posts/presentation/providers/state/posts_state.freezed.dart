@@ -22,6 +22,7 @@ mixin _$PostState {
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$PostState {
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$PostState {
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,8 @@ mixin _$PostState {
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +60,7 @@ mixin _$PostState {
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +69,7 @@ mixin _$PostState {
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +134,7 @@ class _$PostInitialImpl implements PostInitial {
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
   }) {
     return initial();
   }
@@ -138,6 +146,7 @@ class _$PostInitialImpl implements PostInitial {
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
   }) {
     return initial?.call();
   }
@@ -149,6 +158,7 @@ class _$PostInitialImpl implements PostInitial {
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +174,8 @@ class _$PostInitialImpl implements PostInitial {
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
   }) {
     return initial(this);
   }
@@ -175,6 +187,7 @@ class _$PostInitialImpl implements PostInitial {
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +199,7 @@ class _$PostInitialImpl implements PostInitial {
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,6 +255,7 @@ class _$PostLoadingImpl implements PostLoading {
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
   }) {
     return loading();
   }
@@ -252,6 +267,7 @@ class _$PostLoadingImpl implements PostLoading {
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
   }) {
     return loading?.call();
   }
@@ -263,6 +279,7 @@ class _$PostLoadingImpl implements PostLoading {
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -278,6 +295,8 @@ class _$PostLoadingImpl implements PostLoading {
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
   }) {
     return loading(this);
   }
@@ -289,6 +308,7 @@ class _$PostLoadingImpl implements PostLoading {
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
   }) {
     return loading?.call(this);
   }
@@ -300,6 +320,7 @@ class _$PostLoadingImpl implements PostLoading {
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -391,6 +412,7 @@ class _$PostFailureImpl implements PostFailure {
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
   }) {
     return failure(this.failure);
   }
@@ -402,6 +424,7 @@ class _$PostFailureImpl implements PostFailure {
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
   }) {
     return failure?.call(this.failure);
   }
@@ -413,6 +436,7 @@ class _$PostFailureImpl implements PostFailure {
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -428,6 +452,8 @@ class _$PostFailureImpl implements PostFailure {
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
   }) {
     return failure(this);
   }
@@ -439,6 +465,7 @@ class _$PostFailureImpl implements PostFailure {
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
   }) {
     return failure?.call(this);
   }
@@ -450,6 +477,7 @@ class _$PostFailureImpl implements PostFailure {
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -544,6 +572,7 @@ class _$PostSuccessImpl implements PostSuccess {
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
   }) {
     return success(posts);
   }
@@ -555,6 +584,7 @@ class _$PostSuccessImpl implements PostSuccess {
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
   }) {
     return success?.call(posts);
   }
@@ -566,6 +596,7 @@ class _$PostSuccessImpl implements PostSuccess {
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -581,6 +612,8 @@ class _$PostSuccessImpl implements PostSuccess {
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
   }) {
     return success(this);
   }
@@ -592,6 +625,7 @@ class _$PostSuccessImpl implements PostSuccess {
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
   }) {
     return success?.call(this);
   }
@@ -603,6 +637,7 @@ class _$PostSuccessImpl implements PostSuccess {
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -619,4 +654,160 @@ abstract class PostSuccess implements PostState {
   @JsonKey(ignore: true)
   _$$PostSuccessImplCopyWith<_$PostSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PostSuccessAddDeleteUpdateImplCopyWith<$Res> {
+  factory _$$PostSuccessAddDeleteUpdateImplCopyWith(
+          _$PostSuccessAddDeleteUpdateImpl value,
+          $Res Function(_$PostSuccessAddDeleteUpdateImpl) then) =
+      __$$PostSuccessAddDeleteUpdateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$PostSuccessAddDeleteUpdateImplCopyWithImpl<$Res>
+    extends _$PostStateCopyWithImpl<$Res, _$PostSuccessAddDeleteUpdateImpl>
+    implements _$$PostSuccessAddDeleteUpdateImplCopyWith<$Res> {
+  __$$PostSuccessAddDeleteUpdateImplCopyWithImpl(
+      _$PostSuccessAddDeleteUpdateImpl _value,
+      $Res Function(_$PostSuccessAddDeleteUpdateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$PostSuccessAddDeleteUpdateImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
+  const _$PostSuccessAddDeleteUpdateImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'PostState.successAddDeleteUpdate(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostSuccessAddDeleteUpdateImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostSuccessAddDeleteUpdateImplCopyWith<_$PostSuccessAddDeleteUpdateImpl>
+      get copyWith => __$$PostSuccessAddDeleteUpdateImplCopyWithImpl<
+          _$PostSuccessAddDeleteUpdateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Failure failure) failure,
+    required TResult Function(List<PostModel>? posts) success,
+    required TResult Function(String message) successAddDeleteUpdate,
+  }) {
+    return successAddDeleteUpdate(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(Failure failure)? failure,
+    TResult? Function(List<PostModel>? posts)? success,
+    TResult? Function(String message)? successAddDeleteUpdate,
+  }) {
+    return successAddDeleteUpdate?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failure failure)? failure,
+    TResult Function(List<PostModel>? posts)? success,
+    TResult Function(String message)? successAddDeleteUpdate,
+    required TResult orElse(),
+  }) {
+    if (successAddDeleteUpdate != null) {
+      return successAddDeleteUpdate(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PostInitial value) initial,
+    required TResult Function(PostLoading value) loading,
+    required TResult Function(PostFailure value) failure,
+    required TResult Function(PostSuccess value) success,
+    required TResult Function(PostSuccessAddDeleteUpdate value)
+        successAddDeleteUpdate,
+  }) {
+    return successAddDeleteUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PostInitial value)? initial,
+    TResult? Function(PostLoading value)? loading,
+    TResult? Function(PostFailure value)? failure,
+    TResult? Function(PostSuccess value)? success,
+    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
+  }) {
+    return successAddDeleteUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PostInitial value)? initial,
+    TResult Function(PostLoading value)? loading,
+    TResult Function(PostFailure value)? failure,
+    TResult Function(PostSuccess value)? success,
+    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
+    required TResult orElse(),
+  }) {
+    if (successAddDeleteUpdate != null) {
+      return successAddDeleteUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PostSuccessAddDeleteUpdate implements PostState {
+  const factory PostSuccessAddDeleteUpdate(final String message) =
+      _$PostSuccessAddDeleteUpdateImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$PostSuccessAddDeleteUpdateImplCopyWith<_$PostSuccessAddDeleteUpdateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

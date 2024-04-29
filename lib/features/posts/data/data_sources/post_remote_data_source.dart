@@ -48,6 +48,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
     await client.post(Uri.parse("$BASE_URL/posts/"), body: body);
 
     if (response.statusCode == 201) {
+      print('addPostResponse::: ${response.body}');
       return Future.value(unit);
     } else {
       throw ServerException();
@@ -82,6 +83,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
+      print('upatePostResponse::: ${response.body}');
       return Future.value(unit);
     } else {
       throw ServerException();

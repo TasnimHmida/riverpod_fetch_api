@@ -29,7 +29,7 @@ class PostNotifier extends StateNotifier<PostState> {
     state = await response.fold(
       (failure) => PostState.failure(failure),
       (_) async {
-        return const PostState.success([]);
+        return const PostState.successAddDeleteUpdate('post added successfully');
       },
     );
   }
@@ -41,7 +41,7 @@ class PostNotifier extends StateNotifier<PostState> {
     state = await response.fold(
       (failure) => PostState.failure(failure),
       (_) async {
-        return const PostState.success([]);
+        return const PostState.successAddDeleteUpdate('post updated successfully');
       },
     );
   }
@@ -53,7 +53,7 @@ class PostNotifier extends StateNotifier<PostState> {
     state = await response.fold(
       (failure) => PostState.failure(failure),
       (_) async {
-        return const PostState.success([]);
+        return const PostState.successAddDeleteUpdate('post deleted successfully');
       },
     );
   }
