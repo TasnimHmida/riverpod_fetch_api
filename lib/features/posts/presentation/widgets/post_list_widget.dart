@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import '../pages/post_detail_page.dart';
 
 class PostListWidget extends StatelessWidget {
+  final Function(PostModel) moveToEditPageFunc;
   final List<PostModel> posts;
+
   const PostListWidget({
     super.key,
+    required this.moveToEditPageFunc,
     required this.posts,
   });
 
@@ -26,12 +29,13 @@ class PostListWidget extends StatelessWidget {
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => PostDetailPage(post: posts[index]),
-              ),
-            );
+            moveToEditPageFunc(posts[index]);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (_) => PostDetailPage(post: posts[index]),
+            //   ),
+            // );
           },
         );
       },

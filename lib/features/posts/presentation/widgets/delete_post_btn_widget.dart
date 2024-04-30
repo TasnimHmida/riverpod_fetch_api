@@ -19,11 +19,14 @@ class DeletePostBtnWidget extends ConsumerWidget {
     ref.listen(
       postStateNotifierProvider.select((value) => value),
       ((PostState? previous, PostState next) {
-
         if (next is PostSuccessAddDeleteUpdate) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(next.message.toString())));
-          Navigator.of(context).pop();
+          if (next.message.contains('deleted')) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(next.message.toString())));
+            Navigator.of(context).pop('refresh');
+          }
+          Navigator.of(context).pop('refresh');
+
         } else if (next is PostFailure) {
           Navigator.of(context).pop();
           ScaffoldMessenger.of(context)

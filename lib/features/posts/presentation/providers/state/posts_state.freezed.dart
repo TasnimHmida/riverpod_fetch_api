@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PostState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
@@ -27,7 +26,6 @@ mixin _$PostState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
@@ -36,7 +34,6 @@ mixin _$PostState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
@@ -46,7 +43,6 @@ mixin _$PostState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
@@ -56,7 +52,6 @@ mixin _$PostState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
@@ -65,7 +60,6 @@ mixin _$PostState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
@@ -90,127 +84,6 @@ class _$PostStateCopyWithImpl<$Res, $Val extends PostState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$PostInitialImplCopyWith<$Res> {
-  factory _$$PostInitialImplCopyWith(
-          _$PostInitialImpl value, $Res Function(_$PostInitialImpl) then) =
-      __$$PostInitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$PostInitialImplCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$PostInitialImpl>
-    implements _$$PostInitialImplCopyWith<$Res> {
-  __$$PostInitialImplCopyWithImpl(
-      _$PostInitialImpl _value, $Res Function(_$PostInitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$PostInitialImpl implements PostInitial {
-  const _$PostInitialImpl();
-
-  @override
-  String toString() {
-    return 'PostState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PostInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Failure failure) failure,
-    required TResult Function(List<PostModel>? posts) success,
-    required TResult Function(String message) successAddDeleteUpdate,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failure failure)? failure,
-    TResult? Function(List<PostModel>? posts)? success,
-    TResult? Function(String message)? successAddDeleteUpdate,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Failure failure)? failure,
-    TResult Function(List<PostModel>? posts)? success,
-    TResult Function(String message)? successAddDeleteUpdate,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
-    required TResult Function(PostLoading value) loading,
-    required TResult Function(PostFailure value) failure,
-    required TResult Function(PostSuccess value) success,
-    required TResult Function(PostSuccessAddDeleteUpdate value)
-        successAddDeleteUpdate,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
-    TResult? Function(PostLoading value)? loading,
-    TResult? Function(PostFailure value)? failure,
-    TResult? Function(PostSuccess value)? success,
-    TResult? Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
-    TResult Function(PostLoading value)? loading,
-    TResult Function(PostFailure value)? failure,
-    TResult Function(PostSuccess value)? success,
-    TResult Function(PostSuccessAddDeleteUpdate value)? successAddDeleteUpdate,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PostInitial implements PostState {
-  const factory PostInitial() = _$PostInitialImpl;
 }
 
 /// @nodoc
@@ -251,7 +124,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
@@ -263,7 +135,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
@@ -275,7 +146,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
@@ -291,7 +161,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
@@ -304,7 +173,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
@@ -316,7 +184,6 @@ class _$PostLoadingImpl implements PostLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
@@ -408,7 +275,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
@@ -420,7 +286,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
@@ -432,7 +297,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
@@ -448,7 +312,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
@@ -461,7 +324,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
@@ -473,7 +335,6 @@ class _$PostFailureImpl implements PostFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
@@ -568,7 +429,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
@@ -580,7 +440,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
@@ -592,7 +451,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
@@ -608,7 +466,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
@@ -621,7 +478,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
@@ -633,7 +489,6 @@ class _$PostSuccessImpl implements PostSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,
@@ -723,7 +578,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
     required TResult Function(List<PostModel>? posts) success,
@@ -735,7 +589,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
     TResult? Function(List<PostModel>? posts)? success,
@@ -747,7 +600,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     TResult Function(List<PostModel>? posts)? success,
@@ -763,7 +615,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PostInitial value) initial,
     required TResult Function(PostLoading value) loading,
     required TResult Function(PostFailure value) failure,
     required TResult Function(PostSuccess value) success,
@@ -776,7 +627,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PostInitial value)? initial,
     TResult? Function(PostLoading value)? loading,
     TResult? Function(PostFailure value)? failure,
     TResult? Function(PostSuccess value)? success,
@@ -788,7 +638,6 @@ class _$PostSuccessAddDeleteUpdateImpl implements PostSuccessAddDeleteUpdate {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PostInitial value)? initial,
     TResult Function(PostLoading value)? loading,
     TResult Function(PostFailure value)? failure,
     TResult Function(PostSuccess value)? success,

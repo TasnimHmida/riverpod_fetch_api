@@ -26,4 +26,18 @@ class UpdatePostBtnWidget extends StatelessWidget {
       label: const Text("Edit"),
     );
   }
+
+  void moveToPostUpdatePage(Function() refresh,PostModel post, BuildContext context) async {
+    final information = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => PostAddUpdatePage(
+            isUpdatePost: true,
+            post:post
+          )),
+    );
+    if (information != null) {
+      refresh();
+    }
+  }
 }

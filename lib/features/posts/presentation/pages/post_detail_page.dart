@@ -3,18 +3,31 @@ import 'package:flutter/material.dart';
 import '../../data/models/post_model.dart';
 import '../widgets/post_detail_widget.dart';
 
-class PostDetailPage extends StatelessWidget {
+class PostDetailPage extends StatefulWidget {
   final PostModel post;
+
   const PostDetailPage({
     Key? key,
     required this.post,
   }) : super(key: key);
 
   @override
+  State<PostDetailPage> createState() => _PostDetailPageState();
+}
+
+class _PostDetailPageState extends State<PostDetailPage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppbar(),
-      body: _buildBody(),
+    return WillPopScope(
+      onWillPop: () async {
+        //add event here
+        Navigator.of(context).pop('refresh');
+        return true;
+      },
+      child: Scaffold(
+        appBar: _buildAppbar(),
+        body: _buildBody(),
+      ),
     );
   }
 
@@ -28,7 +41,7 @@ class PostDetailPage extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: PostDetailWidget(post: post),
+        child: PostDetailWidget(post: widget.post),
       ),
     );
   }

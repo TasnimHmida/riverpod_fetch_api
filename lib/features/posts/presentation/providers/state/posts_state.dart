@@ -5,7 +5,6 @@ part 'posts_state.freezed.dart';
 
 @freezed
 abstract class PostState with _$PostState {
-  const factory PostState.initial() = PostInitial;
   const factory PostState.loading() = PostLoading;
   const factory PostState.failure(Failure failure) = PostFailure;
   const factory PostState.success(List<PostModel>? posts) = PostSuccess;

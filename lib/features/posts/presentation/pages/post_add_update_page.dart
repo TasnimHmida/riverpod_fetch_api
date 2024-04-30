@@ -3,7 +3,6 @@ import '../../data/models/post_model.dart';
 import '../providers/posts_provider.dart';
 import '../providers/state/posts_state.dart';
 import '../widgets/form_widget.dart';
-import 'posts_page.dart';
 import 'package:flutter/material.dart';
 
 class PostAddUpdatePage extends ConsumerWidget {
@@ -32,7 +31,7 @@ class PostAddUpdatePage extends ConsumerWidget {
         if (next is PostSuccessAddDeleteUpdate) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(next.message.toString())));
-          Navigator.of(context).pop();
+          Navigator.of(context).pop('refresh');
         } else if (next is PostFailure) {
           Navigator.of(context).pop();
           ScaffoldMessenger.of(context)

@@ -1,8 +1,6 @@
 import 'package:riverpod_fetch_api/features/posts/presentation/widgets/update_post_btn_widget.dart';
-
 import '../../data/models/post_model.dart';
 import 'package:flutter/material.dart';
-
 import 'delete_post_btn_widget.dart';
 
 class PostDetailWidget extends StatelessWidget {
