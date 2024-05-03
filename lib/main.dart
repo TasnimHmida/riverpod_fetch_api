@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/observers.dart';
 import 'core/routes/app_route.dart';
 import 'core/strings.dart';
+import 'features/authentication/presentation/pages/login_page.dart';
 import 'features/posts/presentation/pages/posts_page.dart';
 
 Future<void> main() async {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PostsPage(),
+      home: LoginPage(),
       // routeInformationParser: appRouter.defaultRouteParser(),
       // routerDelegate: appRouter.delegate(),
     );
