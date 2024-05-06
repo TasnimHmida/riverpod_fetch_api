@@ -14,9 +14,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
     final response = await authRepository.login(email, password);
 
     state = await response.fold(
-      (failure) => AuthState.failure(failure),
+      (failure) => AuthState.failure(failure.message ?? ''),
       (_) async {
-        return const AuthState.success();
+        return const AuthState.loggedIn();
       },
     );
   }
@@ -26,9 +26,20 @@ class AuthNotifier extends StateNotifier<AuthState> {
     final response = await authRepository.register(email, password);
 
     state = await response.fold(
-      (failure) => AuthState.failure(failure),
+      (failure) => AuthState.failure(failure.message ?? ''),
       (_) async {
-        return const AuthState.success();
+        return const AuthState.success('register successful');
+      },
+    );
+  }
+  Future<void> signOut() async {
+    state = const AuthState.loading();
+    final response = await authRepository.signOut();
+
+    state = await response.fold(
+      (failure) => AuthState.failure(failure.message ?? ''),
+      (_) async {
+        return const AuthState.loggedOut();
       },
     );
   }

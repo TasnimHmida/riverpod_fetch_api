@@ -22,10 +22,10 @@ class PostsRepositoryImpl implements PostsRepository {
         final remotePosts = await remoteDataSource.getAllPosts();
         return Right(remotePosts);
       } on ServerException {
-        return const Left(ServerFailure());
+        return const Left(ServerFailure(null));
       }
     } else {
-      return const Left(OfflineFailure());
+      return const Left(OfflineFailure(null));
     }
   }
 
@@ -65,10 +65,10 @@ class PostsRepositoryImpl implements PostsRepository {
         await deleteOrUpdateOrAddPost();
         return const Right(unit);
       } on ServerException {
-        return const Left(ServerFailure());
+        return const Left(ServerFailure(null));
       }
     } else {
-      return const Left(OfflineFailure());
+      return const Left(OfflineFailure(null));
     }
   }
 }

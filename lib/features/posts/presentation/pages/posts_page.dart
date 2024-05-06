@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_fetch_api/features/posts/presentation/pages/post_add_update_page.dart';
 import 'package:riverpod_fetch_api/features/posts/presentation/pages/post_detail_page.dart';
 import '../../../../core/error/failures.dart';
+import '../../../authentication/presentation/pages/login_page.dart';
+import '../../../authentication/presentation/providers/auth_provider.dart';
+import '../../../authentication/presentation/providers/state/auth_state.dart';
 import '../../data/models/post_model.dart';
 import '../providers/posts_provider.dart';
 import '../providers/state/posts_state.dart';
@@ -20,7 +23,7 @@ class PostsPage extends ConsumerWidget {
     final state = ref.watch(postStateNotifierProvider);
 
     return Scaffold(
-      appBar: _buildAppbar(),
+      appBar: _buildAppbar(ref),
       body: RefreshIndicator(
           onRefresh: () => _onRefresh(context, ref),
           child: _buildBody(state, context, ref)),
@@ -28,9 +31,35 @@ class PostsPage extends ConsumerWidget {
     );
   }
 
-  AppBar _buildAppbar() => AppBar(title: const Text('Posts'));
+  AppBar _buildAppbar(WidgetRef ref) => AppBar(title: const Text('Posts'), actions: [
+        TextButton(
+          child: const Row(
+            children: [
+              Icon(Icons.logout, size: 30),
+              SizedBox(width: 5),
+              Text('Logout', style: TextStyle(fontSize: 16)),
+            ],
+          ),
+          onPressed: () {
+            ref.read(authStateNotifierProvider.notifier).signOut();
+          },
+        ),
+      ]);
 
   Widget _buildBody(PostState state, BuildContext context, WidgetRef ref) {
+    ref.listen(
+      authStateNotifierProvider.select((value) => value),
+      ((AuthState? previous, AuthState next) {
+        if (next is AuthLoggedOut) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const LoginPage(),
+            ),
+          );
+        }
+      }),
+    );
     return Padding(
       padding: const EdgeInsets.all(10),
       child: state.when(

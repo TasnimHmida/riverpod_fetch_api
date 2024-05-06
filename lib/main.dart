@@ -11,20 +11,28 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final supabase =
       await Supabase.initialize(url: supabaseUrl, anonKey: supabaseKey);
+  UserResponse? user;
+  try {
+    user = await supabase.client.auth.getUser();
+  } catch (e) {
+    print(e);
+  }
   runApp(ProviderScope(observers: [
     Observers(),
-  ], child: MyApp()));
+  ], child: MyApp(isLoggedIn: user != null)));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  final bool isLoggedIn;
+
+  MyApp({super.key, required this.isLoggedIn});
 
   final appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      home: isLoggedIn ? const PostsPage() : const LoginPage(),
       // routeInformationParser: appRouter.defaultRouteParser(),
       // routerDelegate: appRouter.delegate(),
     );

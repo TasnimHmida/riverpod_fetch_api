@@ -16,25 +16,29 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Failure {
+  String? get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() offline,
-    required TResult Function() server,
-    required TResult Function() emptyCache,
+    required TResult Function(String? message) offline,
+    required TResult Function(String? message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String? message) emptyCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? offline,
-    TResult? Function()? server,
-    TResult? Function()? emptyCache,
+    TResult? Function(String? message)? offline,
+    TResult? Function(String? message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String? message)? emptyCache,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? offline,
-    TResult Function()? server,
-    TResult Function()? emptyCache,
+    TResult Function(String? message)? offline,
+    TResult Function(String? message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String? message)? emptyCache,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,6 +46,7 @@ mixin _$Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(OfflineFailure value) offline,
     required TResult Function(ServerFailure value) server,
+    required TResult Function(AuthFailure value) auth,
     required TResult Function(EmptyCacheFailure value) emptyCache,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +54,7 @@ mixin _$Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OfflineFailure value)? offline,
     TResult? Function(ServerFailure value)? server,
+    TResult? Function(AuthFailure value)? auth,
     TResult? Function(EmptyCacheFailure value)? emptyCache,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,16 +62,22 @@ mixin _$Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OfflineFailure value)? offline,
     TResult Function(ServerFailure value)? server,
+    TResult Function(AuthFailure value)? auth,
     TResult Function(EmptyCacheFailure value)? emptyCache,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -77,13 +89,30 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_value.copyWith(
+      message: null == message
+          ? _value.message!
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$OfflineFailureImplCopyWith<$Res> {
+abstract class _$$OfflineFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
   factory _$$OfflineFailureImplCopyWith(_$OfflineFailureImpl value,
           $Res Function(_$OfflineFailureImpl) then) =
       __$$OfflineFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -93,57 +122,85 @@ class __$$OfflineFailureImplCopyWithImpl<$Res>
   __$$OfflineFailureImplCopyWithImpl(
       _$OfflineFailureImpl _value, $Res Function(_$OfflineFailureImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$OfflineFailureImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OfflineFailureImpl implements OfflineFailure {
-  const _$OfflineFailureImpl();
+  const _$OfflineFailureImpl(this.message);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'Failure.offline()';
+    return 'Failure.offline(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OfflineFailureImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$OfflineFailureImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OfflineFailureImplCopyWith<_$OfflineFailureImpl> get copyWith =>
+      __$$OfflineFailureImplCopyWithImpl<_$OfflineFailureImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() offline,
-    required TResult Function() server,
-    required TResult Function() emptyCache,
+    required TResult Function(String? message) offline,
+    required TResult Function(String? message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String? message) emptyCache,
   }) {
-    return offline();
+    return offline(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? offline,
-    TResult? Function()? server,
-    TResult? Function()? emptyCache,
+    TResult? Function(String? message)? offline,
+    TResult? Function(String? message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String? message)? emptyCache,
   }) {
-    return offline?.call();
+    return offline?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? offline,
-    TResult Function()? server,
-    TResult Function()? emptyCache,
+    TResult Function(String? message)? offline,
+    TResult Function(String? message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String? message)? emptyCache,
     required TResult orElse(),
   }) {
     if (offline != null) {
-      return offline();
+      return offline(message);
     }
     return orElse();
   }
@@ -153,6 +210,7 @@ class _$OfflineFailureImpl implements OfflineFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(OfflineFailure value) offline,
     required TResult Function(ServerFailure value) server,
+    required TResult Function(AuthFailure value) auth,
     required TResult Function(EmptyCacheFailure value) emptyCache,
   }) {
     return offline(this);
@@ -163,6 +221,7 @@ class _$OfflineFailureImpl implements OfflineFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OfflineFailure value)? offline,
     TResult? Function(ServerFailure value)? server,
+    TResult? Function(AuthFailure value)? auth,
     TResult? Function(EmptyCacheFailure value)? emptyCache,
   }) {
     return offline?.call(this);
@@ -173,6 +232,7 @@ class _$OfflineFailureImpl implements OfflineFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OfflineFailure value)? offline,
     TResult Function(ServerFailure value)? server,
+    TResult Function(AuthFailure value)? auth,
     TResult Function(EmptyCacheFailure value)? emptyCache,
     required TResult orElse(),
   }) {
@@ -184,14 +244,25 @@ class _$OfflineFailureImpl implements OfflineFailure {
 }
 
 abstract class OfflineFailure implements Failure {
-  const factory OfflineFailure() = _$OfflineFailureImpl;
+  const factory OfflineFailure(final String? message) = _$OfflineFailureImpl;
+
+  @override
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$OfflineFailureImplCopyWith<_$OfflineFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServerFailureImplCopyWith<$Res> {
+abstract class _$$ServerFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
   factory _$$ServerFailureImplCopyWith(
           _$ServerFailureImpl value, $Res Function(_$ServerFailureImpl) then) =
       __$$ServerFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -201,57 +272,84 @@ class __$$ServerFailureImplCopyWithImpl<$Res>
   __$$ServerFailureImplCopyWithImpl(
       _$ServerFailureImpl _value, $Res Function(_$ServerFailureImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$ServerFailureImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ServerFailureImpl implements ServerFailure {
-  const _$ServerFailureImpl();
+  const _$ServerFailureImpl(this.message);
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'Failure.server()';
+    return 'Failure.server(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ServerFailureImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ServerFailureImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
+      __$$ServerFailureImplCopyWithImpl<_$ServerFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() offline,
-    required TResult Function() server,
-    required TResult Function() emptyCache,
+    required TResult Function(String? message) offline,
+    required TResult Function(String? message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String? message) emptyCache,
   }) {
-    return server();
+    return server(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? offline,
-    TResult? Function()? server,
-    TResult? Function()? emptyCache,
+    TResult? Function(String? message)? offline,
+    TResult? Function(String? message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String? message)? emptyCache,
   }) {
-    return server?.call();
+    return server?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? offline,
-    TResult Function()? server,
-    TResult Function()? emptyCache,
+    TResult Function(String? message)? offline,
+    TResult Function(String? message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String? message)? emptyCache,
     required TResult orElse(),
   }) {
     if (server != null) {
-      return server();
+      return server(message);
     }
     return orElse();
   }
@@ -261,6 +359,7 @@ class _$ServerFailureImpl implements ServerFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(OfflineFailure value) offline,
     required TResult Function(ServerFailure value) server,
+    required TResult Function(AuthFailure value) auth,
     required TResult Function(EmptyCacheFailure value) emptyCache,
   }) {
     return server(this);
@@ -271,6 +370,7 @@ class _$ServerFailureImpl implements ServerFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OfflineFailure value)? offline,
     TResult? Function(ServerFailure value)? server,
+    TResult? Function(AuthFailure value)? auth,
     TResult? Function(EmptyCacheFailure value)? emptyCache,
   }) {
     return server?.call(this);
@@ -281,6 +381,7 @@ class _$ServerFailureImpl implements ServerFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OfflineFailure value)? offline,
     TResult Function(ServerFailure value)? server,
+    TResult Function(AuthFailure value)? auth,
     TResult Function(EmptyCacheFailure value)? emptyCache,
     required TResult orElse(),
   }) {
@@ -292,74 +393,112 @@ class _$ServerFailureImpl implements ServerFailure {
 }
 
 abstract class ServerFailure implements Failure {
-  const factory ServerFailure() = _$ServerFailureImpl;
+  const factory ServerFailure(final String? message) = _$ServerFailureImpl;
+
+  @override
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$EmptyCacheFailureImplCopyWith<$Res> {
-  factory _$$EmptyCacheFailureImplCopyWith(_$EmptyCacheFailureImpl value,
-          $Res Function(_$EmptyCacheFailureImpl) then) =
-      __$$EmptyCacheFailureImplCopyWithImpl<$Res>;
+abstract class _$$AuthFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
+  factory _$$AuthFailureImplCopyWith(
+          _$AuthFailureImpl value, $Res Function(_$AuthFailureImpl) then) =
+      __$$AuthFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$EmptyCacheFailureImplCopyWithImpl<$Res>
-    extends _$FailureCopyWithImpl<$Res, _$EmptyCacheFailureImpl>
-    implements _$$EmptyCacheFailureImplCopyWith<$Res> {
-  __$$EmptyCacheFailureImplCopyWithImpl(_$EmptyCacheFailureImpl _value,
-      $Res Function(_$EmptyCacheFailureImpl) _then)
+class __$$AuthFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$AuthFailureImpl>
+    implements _$$AuthFailureImplCopyWith<$Res> {
+  __$$AuthFailureImplCopyWithImpl(
+      _$AuthFailureImpl _value, $Res Function(_$AuthFailureImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$AuthFailureImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
-  const _$EmptyCacheFailureImpl();
+class _$AuthFailureImpl implements AuthFailure {
+  const _$AuthFailureImpl(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'Failure.emptyCache()';
+    return 'Failure.auth(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyCacheFailureImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthFailureImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthFailureImplCopyWith<_$AuthFailureImpl> get copyWith =>
+      __$$AuthFailureImplCopyWithImpl<_$AuthFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() offline,
-    required TResult Function() server,
-    required TResult Function() emptyCache,
+    required TResult Function(String? message) offline,
+    required TResult Function(String? message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String? message) emptyCache,
   }) {
-    return emptyCache();
+    return auth(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? offline,
-    TResult? Function()? server,
-    TResult? Function()? emptyCache,
+    TResult? Function(String? message)? offline,
+    TResult? Function(String? message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String? message)? emptyCache,
   }) {
-    return emptyCache?.call();
+    return auth?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? offline,
-    TResult Function()? server,
-    TResult Function()? emptyCache,
+    TResult Function(String? message)? offline,
+    TResult Function(String? message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String? message)? emptyCache,
     required TResult orElse(),
   }) {
-    if (emptyCache != null) {
-      return emptyCache();
+    if (auth != null) {
+      return auth(message);
     }
     return orElse();
   }
@@ -369,6 +508,157 @@ class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(OfflineFailure value) offline,
     required TResult Function(ServerFailure value) server,
+    required TResult Function(AuthFailure value) auth,
+    required TResult Function(EmptyCacheFailure value) emptyCache,
+  }) {
+    return auth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OfflineFailure value)? offline,
+    TResult? Function(ServerFailure value)? server,
+    TResult? Function(AuthFailure value)? auth,
+    TResult? Function(EmptyCacheFailure value)? emptyCache,
+  }) {
+    return auth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OfflineFailure value)? offline,
+    TResult Function(ServerFailure value)? server,
+    TResult Function(AuthFailure value)? auth,
+    TResult Function(EmptyCacheFailure value)? emptyCache,
+    required TResult orElse(),
+  }) {
+    if (auth != null) {
+      return auth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthFailure implements Failure {
+  const factory AuthFailure(final String message) = _$AuthFailureImpl;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$AuthFailureImplCopyWith<_$AuthFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EmptyCacheFailureImplCopyWith<$Res>
+    implements $FailureCopyWith<$Res> {
+  factory _$$EmptyCacheFailureImplCopyWith(_$EmptyCacheFailureImpl value,
+          $Res Function(_$EmptyCacheFailureImpl) then) =
+      __$$EmptyCacheFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? message});
+}
+
+/// @nodoc
+class __$$EmptyCacheFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$EmptyCacheFailureImpl>
+    implements _$$EmptyCacheFailureImplCopyWith<$Res> {
+  __$$EmptyCacheFailureImplCopyWithImpl(_$EmptyCacheFailureImpl _value,
+      $Res Function(_$EmptyCacheFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$EmptyCacheFailureImpl(
+      freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
+  const _$EmptyCacheFailureImpl(this.message);
+
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'Failure.emptyCache(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmptyCacheFailureImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmptyCacheFailureImplCopyWith<_$EmptyCacheFailureImpl> get copyWith =>
+      __$$EmptyCacheFailureImplCopyWithImpl<_$EmptyCacheFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) offline,
+    required TResult Function(String? message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String? message) emptyCache,
+  }) {
+    return emptyCache(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? offline,
+    TResult? Function(String? message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String? message)? emptyCache,
+  }) {
+    return emptyCache?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? offline,
+    TResult Function(String? message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String? message)? emptyCache,
+    required TResult orElse(),
+  }) {
+    if (emptyCache != null) {
+      return emptyCache(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OfflineFailure value) offline,
+    required TResult Function(ServerFailure value) server,
+    required TResult Function(AuthFailure value) auth,
     required TResult Function(EmptyCacheFailure value) emptyCache,
   }) {
     return emptyCache(this);
@@ -379,6 +669,7 @@ class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OfflineFailure value)? offline,
     TResult? Function(ServerFailure value)? server,
+    TResult? Function(AuthFailure value)? auth,
     TResult? Function(EmptyCacheFailure value)? emptyCache,
   }) {
     return emptyCache?.call(this);
@@ -389,6 +680,7 @@ class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OfflineFailure value)? offline,
     TResult Function(ServerFailure value)? server,
+    TResult Function(AuthFailure value)? auth,
     TResult Function(EmptyCacheFailure value)? emptyCache,
     required TResult orElse(),
   }) {
@@ -400,5 +692,13 @@ class _$EmptyCacheFailureImpl implements EmptyCacheFailure {
 }
 
 abstract class EmptyCacheFailure implements Failure {
-  const factory EmptyCacheFailure() = _$EmptyCacheFailureImpl;
+  const factory EmptyCacheFailure(final String? message) =
+      _$EmptyCacheFailureImpl;
+
+  @override
+  String? get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$EmptyCacheFailureImplCopyWith<_$EmptyCacheFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -33,6 +33,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
     try {
       final response = await supabase.from('posts').select();
+      print('response::: $response');
       if (response.isNotEmpty) {
         final List<PostModel> postModels = response
             .map<PostModel>(
@@ -42,6 +43,7 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
         return postModels;
       }
     } catch (e) {
+      print('$e');
       throw ServerException();
     }
 
