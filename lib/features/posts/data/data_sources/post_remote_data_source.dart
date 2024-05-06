@@ -32,7 +32,11 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
     // );
 
     try {
-      final response = await supabase.from('posts').select();
+      var user = await supabase.auth.getUser();
+      final response = await supabase
+          .from('posts')
+          .select()
+          .eq('user_id', user.user?.id ?? '');
       print('response::: $response');
       if (response.isNotEmpty) {
         final List<PostModel> postModels = response
@@ -64,8 +68,13 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   @override
   Future<Unit> addPost(PostModel postModel) async {
     try {
+      var user = await supabase.auth.getUser();
       final response = await supabase.from('posts').insert([
-        {'post_title': postModel.title, 'post_body': postModel.body}
+        {
+          'post_title': postModel.title,
+          'post_body': postModel.body,
+          'user_id': user.user?.id
+        }
       ]);
       print('Data created successfully');
       return Future.value(unit);
@@ -117,10 +126,12 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
   @override
   Future<Unit> updatePost(PostModel postModel) async {
     try {
+      var user = await supabase.auth.getUser();
       final postId = postModel.id.toString();
       final response = await supabase.from('posts').update({
         'post_title': postModel.title,
-        'post_body': postModel.body
+        'post_body': postModel.body,
+        'user_id': user.user?.id
       }).eq('id', postId);
 
       print('Data updated successfully');

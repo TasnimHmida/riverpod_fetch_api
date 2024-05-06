@@ -21,9 +21,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
     );
   }
 
-  Future<void> register(String email, String password) async {
+  Future<void> register(String email, String password, String userName) async {
     state = const AuthState.loading();
-    final response = await authRepository.register(email, password);
+    final response = await authRepository.register(email, password, userName);
 
     state = await response.fold(
       (failure) => AuthState.failure(failure.message ?? ''),

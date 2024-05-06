@@ -16,6 +16,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +34,13 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const TextField(
-                      decoration: InputDecoration(labelText: 'UserName'),
+                    TextFormField(
+                      controller: _userNameController,
+                      decoration: const InputDecoration(labelText: 'UserName'),
                     ),
                     TextFormField(
                       controller: _emailController,
-                      decoration:
-                          const InputDecoration(labelText: 'Username/Email'),
+                      decoration: const InputDecoration(labelText: 'Email'),
                     ),
                     TextFormField(
                       controller: _passwordController,
@@ -72,9 +73,10 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
-      ref
-          .read(authStateNotifierProvider.notifier)
-          .register(_emailController.text, _passwordController.text);
+      ref.read(authStateNotifierProvider.notifier).register(
+          _emailController.text,
+          _passwordController.text,
+          _userNameController.text);
     }
   }
 }

@@ -18,6 +18,7 @@ class PostsPage extends ConsumerWidget {
 
   const PostsPage({super.key});
 
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(postStateNotifierProvider);

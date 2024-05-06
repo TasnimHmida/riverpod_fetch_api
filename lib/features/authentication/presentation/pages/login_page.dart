@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_fetch_api/features/authentication/presentation/pages/register_page.dart';
 import '../../../posts/presentation/pages/posts_page.dart';
+import '../../../posts/presentation/providers/posts_provider.dart';
 import '../providers/auth_provider.dart';
 import '../providers/state/auth_state.dart';
 
@@ -32,6 +33,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               builder: (_) => const PostsPage(),
             ),
           );
+          ref.read(postStateNotifierProvider.notifier).getAllPosts();
         } else if (next is AuthFailure) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(next.errorMessage)));
@@ -79,12 +81,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       },
                       child: const Text('Sign Up'),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        // Navigator.pushNamed(context, '/sign_up');
-                      },
-                      child: const Text('Forgot Password?'),
-                    ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     // Navigator.pushNamed(context, '/sign_up');
+                    //   },
+                    //   child: const Text('Forgot Password?'),
+                    // ),
                   ],
                 ),
               ),
